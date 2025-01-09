@@ -1,0 +1,75 @@
+{
+  "pages": {
+    "auth": "Авторизация",
+    "tutorial": "Учебник",
+    "resources": "Ресурсы",
+    "alphabet": "Алфавит",
+    "dataFetching": "Получение данных",
+    "buildingApp": "Создание приложения"
+  },
+  "sidebar": {
+    "logo": "HOSHII",
+    "sublogotext": "Изучение японского языка",
+    "book": "Книга",
+    "loginingButton": "Войти",
+
+    "resources": "Ресурсы",
+    "alphabet": "Алфавит",
+    "playground": "Песочница",
+    "history": "История",
+    "starred": "Избранное",
+    "settings": "Настройки",
+    "models": "Модели",
+    "documentation": "Документация",
+    "designEngineering": "Дизайн и инженерия",
+    "salesMarketing": "Продажи и маркетинг",
+    "travel": "Путешествия"
+  },
+  "userMenu": {
+    "upgradeToPro": "Перейти на Pro",
+    "account": "Аккаунт",
+    "billing": "Оплата",
+    "notifications": "Уведомления",
+    "logOut": "Выйти",
+    "language": "Язык"
+  },
+  "auth": {
+    "title": "Аутентификация",
+    "login": "Вход",
+    "register": "Регистрация",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "name": "Имя",
+    "avatar": "Аватар",
+    "loginButton": "Войти",
+    "registerButton": "Зарегистрироваться",
+    "dragAndDrop": "Перетащите изображение сюда или нажмите для выбора",
+    "dropHere": "Отпустите изображение здесь"
+  },
+  "alphabet": {
+    "alphabet": "Алфавит",
+    "combinedSounds": "Объединенные звуки",
+    "enterRomaji": "Введите ромадзи",
+    "hiragana": "Хирагана",
+    "katakana": "Катакана",
+    "trainer": "Тренажер",
+    "miniTest": {
+      "titleQuestion": "Вопрос",
+      "titleAnswer": "Ответ",
+      "next": "Далее",
+      "previous": "Назад",
+      "correct": "Правильно",
+      "incorrect": "Неправильно"
+    },
+    "start": "Начать",
+    "time": "Время",
+    "record": "Рекорд",
+    "currentAttempt": "Текущая попытка",
+    "correct": "Правильно!",
+    "tryAgain": "Попробуйте еще раз!",
+    "check": "Проверить",
+    "nextWord": "Следующее слово",
+    "finishMessage": "Поздравляем! Вы завершили тренажер за {{time}} секунд.",
+    "recordMessage": "Новый рекорд: {{time}} секунд!"
+  }
+}

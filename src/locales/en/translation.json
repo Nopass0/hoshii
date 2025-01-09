@@ -1,0 +1,74 @@
+{
+  "pages": {
+    "auth": "Authorization",
+    "tutorial": "Tutorial",
+    "resources": "Resources",
+    "alphabet": "Alphabet",
+    "dataFetching": "Data Fetching",
+    "buildingApp": "Building Your Application"
+  },
+  "auth": {
+    "title": "Authentication",
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "name": "Name",
+    "avatar": "Avatar",
+    "loginButton": "Log In",
+    "registerButton": "Sign Up",
+    "dragAndDrop": "Drag and drop an image here, or click to select",
+    "dropHere": "Drop the image here"
+  },
+  "sidebar": {
+    "logo": "HOSHII",
+    "sublogotext": "Interactive japanese learn app",
+    "book": "Book",
+    "loginingButton": "Sign In",
+    "resources": "Resources",
+    "alphabet": "Alphabet",
+    "playground": "Playground",
+    "history": "History",
+    "starred": "Starred",
+    "settings": "Settings",
+    "models": "Models",
+    "documentation": "Documentation",
+    "designEngineering": "Design Engineering",
+    "salesMarketing": "Sales & Marketing",
+    "travel": "Travel"
+  },
+  "userMenu": {
+    "upgradeToPro": "Upgrade to Pro",
+    "account": "Account",
+    "billing": "Billing",
+    "notifications": "Notifications",
+    "logOut": "Log out",
+    "language": "Language"
+  },
+  "alphabet": {
+    "alphabet": "Alphabet",
+    "combinedSounds": "Combined Sounds",
+    "enterRomaji": "Enter romaji",
+    "hiragana": "Hiragana",
+    "katakana": "Katakana",
+    "trainer": "Trainer",
+    "start": "Start",
+    "time": "Time",
+    "record": "Record",
+    "miniTest": {
+      "titleQuestion": "Question",
+      "titleAnswer": "Answer",
+      "next": "Next",
+      "previous": "Previous",
+      "correct": "Correct",
+      "incorrect": "Incorrect"
+    },
+    "currentAttempt": "Current Attempt",
+    "correct": "Correct!",
+    "tryAgain": "Try again!",
+    "check": "Check",
+    "nextWord": "Next Word",
+    "finishMessage": "Congratulations! You've completed the trainer in {{time}} seconds.",
+    "recordMessage": "New record: {{time}} seconds!"
+  }
+}

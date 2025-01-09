@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%; /* Белый фон */
+        --foreground: 0 0% 10%; /* Темно-серый текст */
+        --card: 0 0% 100%; /* Белый фон для карточек */
+        --card-foreground: 0 0% 10%; /* Темно-серый текст на карточках */
+        --popover: 0 0% 100%; /* Белый фон для всплывающих окон */
+        --popover-foreground: 0 0% 10%; /* Темно-серый текст во всплывающих окнах */
+        --primary: 0 78% 56%; /* Красный цвет, как японский флаг */
+        --primary-hover: 0 78% 60%; /* Чуть светлее красного для наведения */
+        --primary-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --secondary: 120 30% 90%; /* Светло-зеленый, как бамбук */
+        --secondary-hover: 120 30% 92%; /* Чуть светлее зеленого для наведения */
+        --secondary-foreground: 0 0% 10%; /* Темно-серый текст на зеленом фоне */
+        --muted: 0 0% 95%; /* Светло-серый для второстепенных элементов */
+        --muted-foreground: 0 0% 45%; /* Серый текст для второстепенных элементов */
+        --accent: 5 80% 90%;
+        --accent-hover: 5 80% 90%;
+        --accent-foreground: 0 100% 20%;
+        --destructive: 0 84% 60%; /* Красный для ошибок */
+        --destructive-hover: 0 84% 65%; /* Чуть светлее красного для наведения */
+        --destructive-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --border: 0 0% 90%; /* Светло-серый для границ */
+        --input: 0 0% 90%; /* Светло-серый для полей ввода */
+        --ring: 0 78% 56%; /* Красный для акцентов */
+        --chart-1: 0 78% 56%; /* Красный для графиков */
+        --chart-2: 120 30% 50%; /* Зеленый для графиков */
+        --chart-3: 30 80% 50%; /* Оранжевый для графиков */
+        --chart-4: 30 80% 60%; /* Оранжевый для графиков */
+        --chart-5: 30 80% 60%; /* Оранжевый для графиков */
+        --radius: 0.5rem; /* Закругление углов */
+        --sidebar-background: 0 0% 98%; /* Светло-серый фон для боковой панели */
+        --sidebar-foreground: 0 0% 20%; /* Темно-серый текст на боковой панели */
+        --sidebar-primary: 0 78% 56%; /* Красный для акцентов на боковой панели */
+        --sidebar-primary-hover: 0 78% 60%; /* Чуть светлее красного для наведения */
+        --sidebar-primary-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --sidebar-accent: 5 80% 90%;
+        --sidebar-accent-hover: 100 60% 30%;
+        --sidebar-accent-foreground: 0 0% 20%; /* Темно-серый текст на фоне сайдбара */
+        --sidebar-border: 0 0% 90%; /* Светло-серый для границ на боковой панели */
+        --sidebar-ring: 0 78% 56%; /* Красный для акцентов на боковой панели */
+    }
+
+    .dark {
+        --background: 0 0% 10%; /* Темный фон */
+        --foreground: 0 0% 90%; /* Светло-серый текст */
+        --card: 0 0% 10%; /* Темный фон для карточек */
+        --card-foreground: 0 0% 90%; /* Светло-серый текст на карточках */
+        --popover: 0 0% 10%; /* Темный фон для всплывающих окон */
+        --popover-foreground: 0 0% 90%; /* Светло-серый текст во всплывающих окнах */
+        --primary: 0 78% 56%; /* Красный цвет, как японский флаг */
+        --primary-hover: 0 78% 60%; /* Чуть светлее красного для наведения */
+        --primary-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --secondary: 120 30% 20%; /* Темно-зеленый, как бамбук */
+        --secondary-hover: 120 30% 25%; /* Чуть светлее зеленого для наведения */
+        --secondary-foreground: 0 0% 90%; /* Светло-серый текст на зеленом фоне */
+        --muted: 0 0% 20%; /* Темно-серый для второстепенных элементов */
+        --muted-foreground: 0 0% 60%; /* Серый текст для второстепенных элементов */
+        --accent: 2 40% 20%;
+        --accent-hover: 5 80% 90%;
+        --accent-foreground: 0 100% 90%; /* Белый текст на оранжевом фоне */
+        --destructive: 0 84% 50%; /* Красный для ошибок */
+        --destructive-hover: 0 84% 55%; /* Чуть светлее красного для наведения */
+        --destructive-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --border: 0 0% 20%; /* Темно-серый для границ */
+        --input: 0 0% 20%; /* Темно-серый для полей ввода */
+        --ring: 0 78% 56%; /* Красный для акцентов */
+        --chart-1: 0 78% 56%; /* Красный для графиков */
+        --chart-2: 120 30% 40%; /* Зеленый для графиков */
+        --chart-3: 30 80% 50%; /* Оранжевый для графиков */
+        --chart-4: 30 80% 50%; /* Оранжевый для графиков */
+        --chart-5: 30 80% 50%; /* Оранжевый для графиков */
+        --sidebar-background: 0 0% 15%; /* Темный фон для боковой панели */
+        --sidebar-foreground: 0 0% 80%; /* Светло-серый текст на боковой панели */
+        --sidebar-primary: 0 78% 56%; /* Красный для акцентов на боковой панели */
+        --sidebar-primary-hover: 0 78% 60%; /* Чуть светлее красного для наведения */
+        --sidebar-primary-foreground: 0 0% 100%; /* Белый текст на красном фоне */
+        --sidebar-accent: 10 15% 20%;
+        --sidebar-accent-hover: 100 60% 30%;
+        --sidebar-accent-foreground: 0 0% 80%; /* Светло-серый текст на темном фоне сайдбара */
+        --sidebar-border: 0 0% 20%; /* Темно-серый для границ на боковой панели */
+        --sidebar-ring: 0 78% 56%; /* Красный для акцентов на боковой панели */
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+    .btn-primary:hover {
+        background-color: hsl(var(--primary-hover));
+    }
+
+    .btn-secondary {
+        background-color: hsl(var(--secondary));
+        color: hsl(var(--secondary-foreground));
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+    .btn-secondary:hover {
+        background-color: hsl(var(--secondary-hover));
+    }
+
+    .btn-accent {
+        background-color: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+    .btn-accent:hover {
+        background-color: hsl(var(--accent-hover));
+    }
+
+    .btn-destructive {
+        background-color: hsl(var(--destructive));
+        color: hsl(var(--destructive-foreground));
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+    .btn-destructive:hover {
+        background-color: hsl(var(--destructive-hover));
+    }
+
+    .sidebar-btn {
+        background-color: hsl(var(--sidebar-accent));
+        color: hsl(var(--sidebar-accent-foreground));
+        transition:
+            background-color 200ms ease,
+            color 200ms ease;
+    }
+    .sidebar-btn:hover {
+        background-color: hsl(var(--sidebar-accent-hover));
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsla(var(--destructive), 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(var(--destructive), 0.9);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(var(--primary), 0.9);
+}
+
+::selection {
+    background-color: rgba(250, 10, 10, 0.2);
+}
