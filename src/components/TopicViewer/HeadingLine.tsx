@@ -6,23 +6,30 @@ type HeadingLineProps = {
   line: LineType;
 };
 
-const HeadingLine: React.FC<HeadingLineProps> = ({ line }) => (
-  <motion.div
-    className={`flex flex-col gap-2 ${line.backgroundColor ? `bg-${line.backgroundColor}` : ""}`}
-    style={{
-      padding: line.padding || "0",
-      color: line.color || "inherit",
-      marginBottom: line.marginBottom || "0",
-    }}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {line.type === "h2" && <h2 className="text-2xl font-bold">{line.text}</h2>}
-    {line.type === "h3" && <h3 className="text-xl font-bold">{line.text}</h3>}
-    {line.type === "h4" && <h4 className="text-lg font-bold">{line.text}</h4>}
-    {line.type === "h5" && <h5 className="text-base font-bold">{line.text}</h5>}
-  </motion.div>
-);
+const HeadingLine: React.FC<HeadingLineProps> = ({ line }) => {
+  if (!["h2", "h3", "h4", "h5"].includes(line.type)) return null;
+
+  const HeadingTag = line.type as keyof JSX.IntrinsicElements;
+
+  return (
+    <motion.div
+      className={`flex flex-col gap-2 ${line.backgroundColor ? `bg-${line.backgroundColor}` : ""}`}
+      style={{
+        padding: line.padding || "0",
+        color: line.color || "inherit",
+        marginBottom: line.marginBottom || "0",
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <HeadingTag
+        className={`font-bold ${line.type === "h2" ? "text-2xl" : line.type === "h3" ? "text-xl" : line.type === "h4" ? "text-lg" : "text-base"}`}
+      >
+        {line.text}
+      </HeadingTag>
+    </motion.div>
+  );
+};
 
 export default HeadingLine;

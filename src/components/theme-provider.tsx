@@ -1,45 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+"use client";
+import React, { useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useThemeStore } from "@/store/themeStore";
 
-// Create a context for the theme
-const ThemeContext = createContext();
-
-// Theme provider component
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
-
-  // Load theme from localStorage on initial render
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-  }, []);
-
-  // Save theme to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-// Custom hook to use the theme context
-export const useTheme = () => useContext(ThemeContext);
-
-// Theme switcher component
-export const ThemeSwitcher = ({ className }: { className?: string }) => {
-  const { theme, toggleTheme } = useTheme();
+export const ThemeSwitcher: React.FC<{ className?: string }> = ({
+  className,
+}) => {
+  const { theme, toggleTheme } = useThemeStore();
 
   return (
     <motion.button
@@ -74,4 +43,17 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
       </AnimatePresence>
     </motion.button>
   );
+};
+
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const theme = useThemeStore((state) => state.theme);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+  }, [theme]);
+
+  return <>{children}</>;
 };

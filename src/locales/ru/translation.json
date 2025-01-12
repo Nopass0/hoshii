@@ -5,14 +5,15 @@
     "resources": "Ресурсы",
     "alphabet": "Алфавит",
     "dataFetching": "Получение данных",
-    "buildingApp": "Создание приложения"
+    "buildingApp": "Создание приложения",
+    "settings": "Настройки"
   },
   "sidebar": {
     "logo": "HOSHII",
     "sublogotext": "Изучение японского языка",
     "book": "Книга",
+    "adminPanel": "Панель администратора",
     "loginingButton": "Войти",
-
     "resources": "Ресурсы",
     "alphabet": "Алфавит",
     "playground": "Песочница",
@@ -31,7 +32,8 @@
     "billing": "Оплата",
     "notifications": "Уведомления",
     "logOut": "Выйти",
-    "language": "Язык"
+    "language": "Язык",
+    "settings": "Настройки"
   },
   "auth": {
     "title": "Аутентификация",
@@ -71,5 +73,15 @@
     "nextWord": "Следующее слово",
     "finishMessage": "Поздравляем! Вы завершили тренажер за {{time}} секунд.",
     "recordMessage": "Новый рекорд: {{time}} секунд!"
+  },
+  "settings": {
+    "title": "Настройки пользователя",
+    "username": "Имя пользователя",
+    "usernamePlaceholder": "Введите новое имя пользователя",
+    "avatar": "Аватар",
+    "dropzoneText": "Перетащите изображение сюда или нажмите для выбора файла",
+    "saveButton": "Сохранить изменения",
+    "updateSuccess": "Профиль успешно обновлен",
+    "updateError": "Не удалось обновить профиль"
   }
 }

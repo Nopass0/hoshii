@@ -7,8 +7,10 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
+  LifeBuoy,
   Map,
   PieChart,
+  Send,
   Settings2,
   SquareTerminal,
   TestTube,
@@ -28,6 +30,9 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { useTranslation } from "react-i18next"; // Импорт хука для переводов
+import { NavSecondary } from "./nav-secondary";
+import { useAdmin } from "@/hooks/useAdmin";
+import { useUser } from "@/hooks/useUser";
 
 // Это пример данных.
 const data = {
@@ -98,10 +103,36 @@ const data = {
       icon: Type,
     },
   ],
+  navSecondary: [],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { t } = useTranslation(); // Используем хук для переводов
+  const { t } = useTranslation();
+  const { isAdmin } = useAdmin();
+  const { isLoading } = useUser();
+  const [navSecondary, setNavSecondary] = React.useState(data.navSecondary);
+
+  React.useEffect(() => {
+    if (!isLoading && isAdmin()) {
+      setNavSecondary((prevNavSecondary) => {
+        const adminPanelItem = {
+          title: t("sidebar.adminPanel"),
+          url: "#",
+          icon: Send,
+        };
+
+        // Check if the admin panel item already exists
+        const adminPanelExists = prevNavSecondary.some(
+          (item) => item.title === t("sidebar.adminPanel"),
+        );
+
+        if (!adminPanelExists) {
+          return [...prevNavSecondary, adminPanelItem];
+        }
+        return prevNavSecondary;
+      });
+    }
+  }, [isAdmin, isLoading, t]);
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -125,6 +156,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             name: t(resource.name), // Переводим названия проектов
           }))}
         />
+        <NavSecondary items={navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

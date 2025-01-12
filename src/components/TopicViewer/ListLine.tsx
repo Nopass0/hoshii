@@ -6,53 +6,34 @@ type ListLineProps = {
   line: LineType;
 };
 
-const ListLine: React.FC<ListLineProps> = ({ line }) => (
-  <motion.div
-    className={`flex flex-col gap-2 ${line.backgroundColor ? `bg-${line.backgroundColor}` : ""}`}
-    style={{
-      padding: line.padding || "0",
-      color: line.color || "inherit",
-      marginBottom: line.marginBottom || "0",
-    }}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {line.type === "numerical" && (
-      <ol className="pl-6">
-        {line.items.map((item: string, itemIndex: number) => (
-          <div key={itemIndex} className="flex flex-row gap-1">
-            <li
-              key={itemIndex}
-              className=" w-4 float-right text-sidebar-foreground/50"
-            >
-              {itemIndex + 1}.
-            </li>
-            <li className="" key={itemIndex}>
-              {item}
-            </li>
-          </div>
+const ListLine: React.FC<ListLineProps> = ({ line }) => {
+  if (line.type !== "numerical" && line.type !== "bulleted") return null;
+
+  const ListTag = line.type === "numerical" ? "ol" : "ul";
+
+  return (
+    <motion.div
+      className={`flex flex-col gap-2 ${line.backgroundColor ? `bg-${line.backgroundColor}` : ""}`}
+      style={{
+        padding: line.padding || "0",
+        color: line.color || "inherit",
+        marginBottom: line.marginBottom || "0",
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <ListTag
+        className={line.type === "numerical" ? "list-decimal" : "list-disc"}
+      >
+        {line.items.map((item, index) => (
+          <li key={index} className="ml-6">
+            {item}
+          </li>
         ))}
-      </ol>
-    )}
-    {line.type === "bulleted" && (
-      <ul className="pl-6">
-        {line.items.map((item: string, itemIndex: number) => (
-          <div key={itemIndex} className="flex flex-row gap-1">
-            <li
-              key={itemIndex}
-              className=" w-4 float-right text-sidebar-foreground/50"
-            >
-              {/* bullet char */}•
-            </li>
-            <li className="" key={itemIndex}>
-              {item}
-            </li>
-          </div>
-        ))}
-      </ul>
-    )}
-  </motion.div>
-);
+      </ListTag>
+    </motion.div>
+  );
+};
 
 export default ListLine;

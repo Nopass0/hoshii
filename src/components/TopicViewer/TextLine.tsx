@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { marked } from "marked";
 import { LineType } from "@/types";
 
 type TextLineProps = {
@@ -10,16 +9,33 @@ type TextLineProps = {
 const TextLine: React.FC<TextLineProps> = ({ line }) => {
   const [showFullText, setShowFullText] = useState(false);
 
-  // Custom renderer for marked to style *text* as red
-  const renderer = new marked.Renderer();
-  renderer.em = ({ tokens }: marked.Tokens.Em) =>
-    `<em style="color: red;">${tokens.join("")}</em>`;
-  renderer.strong = ({ tokens }: marked.Tokens.Strong) =>
-    `<strong style="color: red;">${tokens.join("")}</strong>`;
+  if (line.type !== "text" && line.type !== "hidden") return null;
+
+  const renderMarkdown = (text: string) => {
+    return text.replace(
+      /(\*\*|__)(.*?)\1|(\*|_)(.*?)\3/g,
+      (match, p1, p2, p3, p4) => {
+        if (p1) {
+          return `<span class="text-red-500 font-bold">${p2}</span>`;
+        } else {
+          return `<span class="text-blue-500 italic">${p4}</span>`;
+        }
+      },
+    );
+  };
+
+  const content =
+    line.type === "hidden" && !showFullText
+      ? line.text
+      : line.type === "hidden"
+        ? line.fullText
+        : line.text;
 
   return (
     <motion.div
-      className={`flex flex-col gap-2 ${line.backgroundColor ? `bg-${line.backgroundColor}` : ""}`}
+      className={`flex flex-col gap-2 ${
+        line.backgroundColor ? `bg-${line.backgroundColor}` : ""
+      }`}
       style={{
         padding: line.padding || "0",
         color: line.color || "inherit",
@@ -29,33 +45,16 @@ const TextLine: React.FC<TextLineProps> = ({ line }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {line.type === "hidden" && (
-        <div
-          className="cursor-pointer"
-          onClick={() => {
+      <div
+        className={`markdown ${line.alignment || "text-left"}`}
+        dangerouslySetInnerHTML={{ __html: renderMarkdown(content || "") }}
+        onClick={() => {
+          if (line.type === "hidden") {
             setShowFullText(!showFullText);
-          }}
-        >
-          <div
-            className={`markdown ${line.alignment || "center"}`}
-            dangerouslySetInnerHTML={{
-              __html: marked(showFullText ? line.fullText : line.text || "", {
-                renderer,
-              }),
-            }}
-            style={{ textAlign: line.alignment || "center" }}
-          />
-        </div>
-      )}
-      {line.type === "text" && (
-        <div
-          className={`markdown ${line.alignment || "center"}`}
-          dangerouslySetInnerHTML={{
-            __html: marked(line.text || "", { renderer }),
-          }}
-          style={{ textAlign: line.alignment || "center" }}
-        />
-      )}
+          }
+        }}
+        style={{ cursor: line.type === "hidden" ? "pointer" : "default" }}
+      />
     </motion.div>
   );
 };
